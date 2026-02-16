@@ -8,6 +8,5 @@ public class AppTest {
     @Test
     public void test() {
         ConfigManager TEST = new ConfigManager();
-        System.out.println(TEST.emailTest("a@b.com"));
     }
 }

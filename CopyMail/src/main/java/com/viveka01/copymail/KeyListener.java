@@ -16,20 +16,18 @@ public class KeyListener implements NativeKeyListener {
     public void nativeKeyPressed(NativeKeyEvent e) {
         String KEY_NAME = NativeKeyEvent.getKeyText(e.getKeyCode());
         keyStates.put(KEY_NAME, true);
-        System.out.println("Pressed: " + KEY_NAME);
+        // System.out.println("Pressed: " + KEY_NAME);
     }
 
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
         String KEY_NAME = NativeKeyEvent.getKeyText(e.getKeyCode());
         keyStates.put(KEY_NAME, false);
-        System.out.println("Released: " + KEY_NAME);
+        // System.out.println("Released: " + KEY_NAME);
     }
 
     @Override
     public void nativeKeyTyped(NativeKeyEvent e) {
-        String KEY_NAME = NativeKeyEvent.getKeyText(e.getKeyCode());
-        System.out.println("Typed: " + KEY_NAME);
     }
 
     /**
@@ -41,13 +39,13 @@ public class KeyListener implements NativeKeyListener {
     protected boolean isKeyPressed(String KEY_NAME) {
         Boolean OUTPUT = keyStates.getOrDefault(KEY_NAME, false);
         if (OUTPUT) {
-            System.out.println("Specified key pressed: " + KEY_NAME);
+            // System.out.println("Specified key pressed: " + KEY_NAME);
         }
         return OUTPUT;
     }
 
     protected static KeyListener getInstance() {
-        System.out.println("Instance Called");
+        // System.out.println("Instance Called");
         return INSTANCE;
     }
 
@@ -58,7 +56,7 @@ public class KeyListener implements NativeKeyListener {
         } catch (NativeHookException ex) {
             throw new RuntimeException(ex);
         }
-        System.out.println("Listener Init");
+        // System.out.println("Listener Init");
         GlobalScreen.addNativeKeyListener(this);
     }
 
