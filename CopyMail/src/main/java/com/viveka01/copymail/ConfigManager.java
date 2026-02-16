@@ -11,6 +11,26 @@ public class ConfigManager {
     private static final File CONFIG = new File("config.json");
     static ObjectMapper OBJECTMAPPER = new ObjectMapper();
     static {
+        configInit();
+        try {
+            Config CONFIG_OBJ = OBJECTMAPPER.readValue(CONFIG, Config.class);
+        } catch (StreamReadException e) {
+            e.printStackTrace();
+            System.out.println("Invalid config, deleting and re-initializing");
+            configDelete();
+            configInit();
+        } catch (DatabindException e) {
+            e.printStackTrace();
+            System.out.println("Invalid config structure, deleting and re-initializing");
+            configDelete();
+            configInit();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("GG's");
+        }
+    }
+
+    static private void configInit() {
         if (!CONFIG.exists()) {
             try {
                 CONFIG.createNewFile();
@@ -18,11 +38,21 @@ public class ConfigManager {
             } catch (IOException e) {
                 System.out.println("Config creation failed :(...");
             }
+        } else {
+            System.out.println("Config found");
+        }
+    }
+
+    static private void configDelete() {
+        if (CONFIG.delete()) {
+            System.out.println("File deleted successfully");
+        } else {
+            System.out.println("Failed to delete the file");
         }
     }
 
     static void valueAssignment() throws StreamReadException, DatabindException, IOException {
-        Config CONFIG = OBJECTMAPPER.readValue(CONFIG, Config.class);
+
     }
 
     static private class Config {
