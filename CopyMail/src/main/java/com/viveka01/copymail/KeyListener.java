@@ -6,23 +6,33 @@ import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashSet;
 
 public class KeyListener implements NativeKeyListener {
     // Creating a static object of this class, so it starts recording
     private static final KeyListener INSTANCE = new KeyListener(); // singleton pattern
-    private static final Map<String, Boolean> keyStates = new ConcurrentHashMap<>();
+    private static final Map<String, Boolean> KEY_STATES = new ConcurrentHashMap<>();
+    private static final Map<Integer, HashSet<String>> REVERSE_KEY_STATE = new ConcurrentHashMap<>();
+    static {
+        REVERSE_KEY_STATE.put(1, new HashSet<>());
+        REVERSE_KEY_STATE.put(0, new HashSet<>());
+    }
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
         String KEY_NAME = NativeKeyEvent.getKeyText(e.getKeyCode());
-        keyStates.put(KEY_NAME, true);
+        KEY_STATES.put(KEY_NAME, true);
+        REVERSE_KEY_STATE.get(1).add(KEY_NAME);
+        REVERSE_KEY_STATE.get(0).remove(KEY_NAME);
         // System.out.println("Pressed: " + KEY_NAME);
     }
 
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
         String KEY_NAME = NativeKeyEvent.getKeyText(e.getKeyCode());
-        keyStates.put(KEY_NAME, false);
+        KEY_STATES.put(KEY_NAME, false);
+        REVERSE_KEY_STATE.get(0).add(KEY_NAME);
+        REVERSE_KEY_STATE.get(1).remove(KEY_NAME);
         // System.out.println("Released: " + KEY_NAME);
     }
 
@@ -37,11 +47,15 @@ public class KeyListener implements NativeKeyListener {
      * @return true if pressed, false otherwise
      */
     protected boolean isKeyPressed(String KEY_NAME) {
-        Boolean OUTPUT = keyStates.getOrDefault(KEY_NAME, false);
+        Boolean OUTPUT = KEY_STATES.getOrDefault(KEY_NAME, false);
         if (OUTPUT) {
             // System.out.println("Specified key pressed: " + KEY_NAME);
         }
         return OUTPUT;
+    }
+
+    protected HashSet<String> isAnyKeyPressed() {
+        return REVERSE_KEY_STATE.get(1);
     }
 
     protected static KeyListener getInstance() {
