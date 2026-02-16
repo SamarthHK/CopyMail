@@ -5,10 +5,9 @@ public class App {
     static final String KEY_BIND = "A";
     static Boolean KEY_BIND_TOGGLE = true;
     static KeyListener READER = KeyListener.getInstance();
-    static ConfigManager CONFIG = new ConfigManager();
 
     public static void main(String[] args) {
-        System.out.println("Main");
+        ConfigManager.getInstance();
         // while (!READER.isKeyPressed("Escape")) {
         // KeyToggle();
         // try {

@@ -1,7 +1,6 @@
 package com.viveka01.copymail;
 
 import java.io.*;
-import com.fasterxml.jackson.*;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.annotation.*;
@@ -10,7 +9,19 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 public class ConfigManager {
     private static final File CONFIG = new File("config.json");
     static ObjectMapper OBJECTMAPPER = new ObjectMapper();
-    static {
+
+    // Creates a Singleton of the ConfigManager class
+    private static class Holder {
+        private static final ConfigManager INSTANCE = new ConfigManager();
+    }
+
+    // Once called, Creates the singleton and calls Constructor
+    public static ConfigManager getInstance() {
+        return Holder.INSTANCE;
+    }
+
+    // Constructor that Initializes the whole Config
+    private ConfigManager() {
         configInit();
         try {
             Config CONFIG_OBJ = OBJECTMAPPER.readValue(CONFIG, Config.class);
@@ -30,6 +41,7 @@ public class ConfigManager {
         }
     }
 
+    // Identifying if the config exists, if it doesnt, creates a blank one
     static private void configInit() {
         if (!CONFIG.exists()) {
             try {
@@ -43,6 +55,7 @@ public class ConfigManager {
         }
     }
 
+    // File deletion
     static private void configDelete() {
         if (CONFIG.delete()) {
             System.out.println("File deleted successfully");
@@ -51,10 +64,7 @@ public class ConfigManager {
         }
     }
 
-    static void valueAssignment() throws StreamReadException, DatabindException, IOException {
-
-    }
-
+    // Structure for Jackson, Structure of config file
     static private class Config {
         @JsonProperty("email")
         Email EMAIL = new Email();
