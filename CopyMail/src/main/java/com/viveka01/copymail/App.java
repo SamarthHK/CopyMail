@@ -7,18 +7,19 @@ public class App {
     static KeyListener READER = KeyListener.getInstance();
 
     public static void main(String[] args) {
+        HotKeyInput.hotKeyInput();
         // ConfigManager.getInstance();
-        while (!READER.isKeyPressed("Escape")) {
-            // KeyToggle();
-            System.out.println(READER.isAnyKeyPressed());
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        System.out.println("Function Escaped");
+        // while (!READER.isKeyPressed("Escape")) {
+        // // KeyToggle();
+        // System.out.println(READER.isAnyKeyPressed());
+        // try {
+        // Thread.sleep(10);
+        // } catch (InterruptedException e) {
+        // // TODO Auto-generated catch block
+        // e.printStackTrace();
+        // }
+        // }
+        // System.out.println("Function Escaped");
     }
 
     private static void KeyToggle() {

@@ -20,7 +20,7 @@ public class KeyListener implements NativeKeyListener {
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
-        String KEY_NAME = NativeKeyEvent.getKeyText(e.getKeyCode());
+        String KEY_NAME = NativeKeyEvent.getKeyText(e.getKeyCode()).toLowerCase();
         KEY_STATES.put(KEY_NAME, true);
         REVERSE_KEY_STATE.get(1).add(KEY_NAME);
         REVERSE_KEY_STATE.get(0).remove(KEY_NAME);
@@ -29,7 +29,7 @@ public class KeyListener implements NativeKeyListener {
 
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
-        String KEY_NAME = NativeKeyEvent.getKeyText(e.getKeyCode());
+        String KEY_NAME = NativeKeyEvent.getKeyText(e.getKeyCode()).toLowerCase();
         KEY_STATES.put(KEY_NAME, false);
         REVERSE_KEY_STATE.get(0).add(KEY_NAME);
         REVERSE_KEY_STATE.get(1).remove(KEY_NAME);
