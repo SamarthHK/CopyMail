@@ -46,7 +46,7 @@ public class KeyListener implements NativeKeyListener {
      * @param keyName The key name, e.g., "A", "Shift", "Alt"
      * @return true if pressed, false otherwise
      */
-    protected boolean isKeyPressed(String KEY_NAME) {
+    public boolean isKeyPressed(String KEY_NAME) {
         Boolean OUTPUT = KEY_STATES.getOrDefault(KEY_NAME, false);
         if (OUTPUT) {
             // System.out.println("Specified key pressed: " + KEY_NAME);
@@ -58,7 +58,7 @@ public class KeyListener implements NativeKeyListener {
         return REVERSE_KEY_STATE.get(1);
     }
 
-    protected static KeyListener getInstance() {
+    public static KeyListener getInstance() {
         // System.out.println("Instance Called");
         return INSTANCE;
     }
