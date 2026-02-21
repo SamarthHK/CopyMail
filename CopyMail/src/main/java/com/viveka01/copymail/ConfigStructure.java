@@ -3,6 +3,8 @@ package com.viveka01.copymail;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ConfigStructure {
+    // Structure of the JSON file, and the read and write methods created for each
+    // feild
     static protected class Config {
         @JsonProperty("email")
         Email EMAIL = new Email();
@@ -33,7 +35,7 @@ public class ConfigStructure {
             @JsonProperty("receiver")
             String RECEIVER;
 
-            protected String ReadRECEIVER() {
+            protected String ReadReceiver() {
                 return RECEIVER;
             }
 

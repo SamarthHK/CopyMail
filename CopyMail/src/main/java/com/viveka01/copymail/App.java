@@ -7,7 +7,7 @@ public class App {
     static KeyListener READER = KeyListener.getInstance();
 
     public static void main(String[] args) {
-        HotKeyInput.hotKeyInput();
+        // HotKeyInput.hotKeyInput();
         // ConfigManager.getInstance();
         // while (!READER.isKeyPressed("Escape")) {
         // // KeyToggle();
@@ -15,11 +15,11 @@ public class App {
         // try {
         // Thread.sleep(10);
         // } catch (InterruptedException e) {
-        // // TODO Auto-generated catch block
         // e.printStackTrace();
         // }
         // }
         // System.out.println("Function Escaped");
+        Email.DefaultEmail();
     }
 
     private static void KeyToggle() {

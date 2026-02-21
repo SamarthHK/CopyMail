@@ -66,7 +66,8 @@ public class ConfigManager {
     }
 
     // File reading
-    public static String configReader(String ITEM) {
+    public String configReader(String ITEM) {
+        getInstance();
         switch (ITEM) {
             case "sender":
                 return CONFIG_OBJ.EMAIL.ReadSender();
