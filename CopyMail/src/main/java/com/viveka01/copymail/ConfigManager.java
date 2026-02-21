@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.exc.StreamReadException;
 public class ConfigManager {
     private static final File CONFIG = new File("config.json");
     static ObjectMapper OBJECTMAPPER = new ObjectMapper();
+    private static ConfigStructure.Config CONFIG_OBJ;
 
     // Creates a Singleton of the ConfigManager class
     private static class Holder {
@@ -24,7 +25,7 @@ public class ConfigManager {
     private ConfigManager() {
         configInit();
         try {
-            ConfigStructure.Config CONFIG_OBJ = OBJECTMAPPER.readValue(CONFIG, ConfigStructure.Config.class);
+            CONFIG_OBJ = OBJECTMAPPER.readValue(CONFIG, ConfigStructure.Config.class);
         } catch (StreamReadException e) {
             e.printStackTrace();
             System.out.println("Invalid config, deleting and re-initializing");
@@ -64,4 +65,18 @@ public class ConfigManager {
         }
     }
 
+    // File reading
+    public static String configReader(String ITEM) {
+        switch (ITEM) {
+            case "sender":
+                return CONFIG_OBJ.EMAIL.ReadSender();
+            case "receiver":
+                return CONFIG_OBJ.EMAIL.ReadReceiver();
+            case "password":
+                return CONFIG_OBJ.EMAIL.ReadPassword();
+            default:
+                return null;
+        }
+
+    }
 }

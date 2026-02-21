@@ -6,16 +6,51 @@ public class ConfigStructure {
     static protected class Config {
         @JsonProperty("email")
         Email EMAIL = new Email();
+
         @JsonProperty("hotkey")
         String HOTKEY;
+
+        protected String ReadHotKey() {
+            return HOTKEY;
+        }
+
+        protected void WriteHotKey(String HOTKEY) {
+            this.HOTKEY = HOTKEY;
+        }
 
         static protected class Email {
             @JsonProperty("sender")
             String SENDER;
+
+            protected String ReadSender() {
+                return SENDER;
+            }
+
+            protected void WriteSender(String SENDER) {
+                this.SENDER = SENDER;
+            }
+
             @JsonProperty("receiver")
             String RECEIVER;
+
+            protected String ReadRECEIVER() {
+                return RECEIVER;
+            }
+
+            protected void WriteRECEIVER(String RECEIVER) {
+                this.RECEIVER = RECEIVER;
+            }
+
             @JsonProperty("app_password")
             String APP_PASSWORD;
+
+            protected String ReadPassword() {
+                return APP_PASSWORD;
+            }
+
+            protected void WritePassword(String APP_PASSWORD) {
+                this.APP_PASSWORD = APP_PASSWORD;
+            }
         }
     }
 }
