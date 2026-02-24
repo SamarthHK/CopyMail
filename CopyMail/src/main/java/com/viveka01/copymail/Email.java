@@ -71,7 +71,7 @@ public class Email {
         MimeMessage EMAIL = EmailDraft();
         try {
             EMAIL.setSubject("CopyMail");
-            EMAIL.setText("Copy from clipboard not added yet :(");
+            EMAIL.setText(ClipBoardReader.readClipBoard());
             Transport.send(EMAIL);
         } catch (MessagingException e) {
             e.printStackTrace();
