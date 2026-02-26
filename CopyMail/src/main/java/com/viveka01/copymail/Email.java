@@ -66,7 +66,7 @@ public class Email {
         return DRAFT;
     }
 
-    // Default enail format used by copy mail
+    // Default email format used by copy mail
     public static void DefaultEmail() {
         MimeMessage EMAIL = EmailDraft();
         try {

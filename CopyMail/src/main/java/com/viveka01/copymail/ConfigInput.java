@@ -10,16 +10,33 @@ public class ConfigInput {
     static Pattern EMAIL_FORMAT = Pattern.compile(EMAIL_PATTERN);
 
     // Taking email input and checking it with regex
-    public static String emailInput() {
+    private static String emailInput() {
         System.out.println("Input Email");
         String EMAIL = INPUT.nextLine();
-        Matcher EMAIL_MATCH = EMAIL_FORMAT.matcher(EMAIL);
-        while (!EMAIL_MATCH.find()) {
+        while (!emailCheck(EMAIL)) {
             System.out.println("Input a proper Email");
             EMAIL = INPUT.nextLine();
-            EMAIL_MATCH = EMAIL_FORMAT.matcher(EMAIL);
         }
         return EMAIL;
+    }
+
+    private static Boolean emailCheck(EMAIL){
+        Matcher EMAIL_MATCH = EMAIL_FORMAT.matcher(EMAIL);
+        EMAIL_MATCH = EMAIL_FORMAT.matcher(EMAIL);
+        return EMAIL_MATCH;
+    }
+
+    // Taking App password input
+    /*
+     * Note to self, add password verification system
+     */
+    private static String passwordInput() {
+        System.out.println("Input your app password");
+        return INPUT.nextLine();
+    }
+
+    private static String hotKeyInput() {
+
     }
 
 }
