@@ -35,8 +35,20 @@ public class ConfigInput {
         return INPUT.nextLine();
     }
 
+    // Taking hotkey as input
     private static String hotKeyInput() {
-
+        return HotKeyInput.hotKeyInput();
     }
 
+    // Taking bot email input
+    private static String senderEmailInput() {
+        System.out.println("Taking input of your bot (sending) email");
+        return emailInput();
+    }
+
+    // taking receiving email input
+    private static String receiverEmailInput() {
+        System.out.println("Taking input of your bot (sending) email");
+        return emailInput();
+    }
 }
