@@ -40,9 +40,9 @@ public class HotKeyInput {
         while (!READER.isKeyPressed("Escape")) {
             KEY_BIND = getCurrentKeyBind();
             resetTimerIfKeyChanged();
-            VALID_KEYBIND = returnKeyBindIfValid();
+            VALID_KEYBIND = returnKeyBindIfValid(DURATION);
             if (VALID_KEYBIND != null) {
-                return VALID_KEYBIND();
+                return VALID_KEYBIND;
             }
             try {
                 Thread.sleep(50);
@@ -60,7 +60,7 @@ public class HotKeyInput {
         }
     }
 
-    private static String returnKeyBindIfValid() {
+    private static String returnKeyBindIfValid(int DURATION) {
         if (KEY_BIND.equals(LAST_KEY_BIND) && TIME.getElapsedMillis() == 0 && !KEY_BIND.equals("")) {
             System.out.println("Hold " + KEY_BIND + " For " + DURATION + " seconds");
         } else if (KEY_BIND.equals(LAST_KEY_BIND) && TIME.getElapsedSeconds() >= DURATION) {

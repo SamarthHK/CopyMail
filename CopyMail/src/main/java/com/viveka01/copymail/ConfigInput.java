@@ -20,10 +20,9 @@ public class ConfigInput {
         return EMAIL;
     }
 
-    private static Boolean emailCheck(EMAIL){
-        Matcher EMAIL_MATCH = EMAIL_FORMAT.matcher(EMAIL);
-        EMAIL_MATCH = EMAIL_FORMAT.matcher(EMAIL);
-        return EMAIL_MATCH;
+    private static boolean emailCheck(String EMAIL_ADDRESS) {
+        Matcher EMAIL_MATCH = EMAIL_FORMAT.matcher(EMAIL_ADDRESS);
+        return EMAIL_MATCH.matches();
     }
 
     // Taking App password input
@@ -48,7 +47,7 @@ public class ConfigInput {
 
     // taking receiving email input
     private static String receiverEmailInput() {
-        System.out.println("Taking input of your bot (sending) email");
+        System.out.println("Taking input of your recipeint email");
         return emailInput();
     }
 }

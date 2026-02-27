@@ -20,33 +20,33 @@ public class ConfigStructure {
             this.HOTKEY = HOTKEY;
         }
 
-        static protected class Email {
+        static protected class EMAIL {
             @JsonProperty("sender")
             String SENDER;
 
-            protected String ReadSender() {
+            protected String readSender() {
                 return SENDER;
             }
 
-            protected void WriteSender(String SENDER) {
+            protected void writeSender(String SENDER) {
                 this.SENDER = SENDER;
             }
 
             @JsonProperty("receiver")
             String RECEIVER;
 
-            protected String ReadReceiver() {
+            protected String readReceiver() {
                 return RECEIVER;
             }
 
-            protected void WriteRECEIVER(String RECEIVER) {
+            protected void writeReceiver(String RECEIVER) {
                 this.RECEIVER = RECEIVER;
             }
 
             @JsonProperty("app_password")
             String APP_PASSWORD;
 
-            protected String ReadPassword() {
+            protected String readPassword() {
                 return APP_PASSWORD;
             }
 
