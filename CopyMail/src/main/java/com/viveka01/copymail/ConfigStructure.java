@@ -7,20 +7,20 @@ public class ConfigStructure {
     // feild
     static protected class Config {
         @JsonProperty("email")
-        Email EMAIL = new Email();
+        Email Email = new Email();
 
         @JsonProperty("hotkey")
         String HOTKEY;
 
-        protected String ReadHotKey() {
+        protected String readHotKey() {
             return HOTKEY;
         }
 
-        protected void WriteHotKey(String HOTKEY) {
+        protected void writeHotKey(String HOTKEY) {
             this.HOTKEY = HOTKEY;
         }
 
-        static protected class EMAIL {
+        static protected class Email {
             @JsonProperty("sender")
             String SENDER;
 
@@ -50,7 +50,7 @@ public class ConfigStructure {
                 return APP_PASSWORD;
             }
 
-            protected void WritePassword(String APP_PASSWORD) {
+            protected void writePassword(String APP_PASSWORD) {
                 this.APP_PASSWORD = APP_PASSWORD;
             }
         }

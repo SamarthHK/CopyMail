@@ -70,14 +70,25 @@ public class ConfigManager {
         getInstance();
         switch (ITEM) {
             case "sender":
-                return CONFIG_OBJ.EMAIL.ReadSender();
+                return CONFIG_OBJ.Email.readSender();
             case "receiver":
-                return CONFIG_OBJ.EMAIL.ReadReceiver();
+                return CONFIG_OBJ.Email.readReceiver();
             case "password":
-                return CONFIG_OBJ.EMAIL.ReadPassword();
+                return CONFIG_OBJ.Email.readPassword();
             default:
                 return null;
         }
 
+    }
+
+    public void configFill(String SENDER, String RECIEVER, String PASSWORD, String HOTKEY) {
+        CONFIG_OBJ.writeHotKey(HOTKEY);
+        CONFIG_OBJ.Email.writePassword(PASSWORD);
+        CONFIG_OBJ.Email.writeReceiver(RECIEVER);
+        CONFIG_OBJ.Email.writeSender(SENDER);
+    }
+
+    public void configWrite() {
+        OBJECTMAPPER.writeValue(CONFIG, CONFIG_OBJ);
     }
 }

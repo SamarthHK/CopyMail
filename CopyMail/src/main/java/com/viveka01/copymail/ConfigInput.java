@@ -50,4 +50,11 @@ public class ConfigInput {
         System.out.println("Taking input of your recipeint email");
         return emailInput();
     }
+
+    public static DefaultInputReturnStructure defaultInput() {
+        System.out.println("Taking input for config");
+        return new DefaultInputReturnStructure(senderEmailInput(), passwordInput(), receiverEmailInput(),
+                hotKeyInput());
+    }
+
 }
