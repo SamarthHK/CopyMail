@@ -9,25 +9,33 @@ public class App {
         ConfigManager.getInstance();
     }
 
+    // public static void main(String[] args) {
+    // while (!READER.isKeyPressed("escape")) {
+    // if (keyToggle()) {
+    // Email.DefaultEmail();
+    // }
+    // try {
+    // Thread.sleep(20);
+    // } catch (InterruptedException e) {
+    // e.printStackTrace();
+    // }
+    // }
+    // System.out.println("Escaped loop");
+    // }
     public static void main(String[] args) {
-        while (!READER.isKeyPressed("escape")) {
-            KeyToggle();
-            try {
-                Thread.sleep(20);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println("Escaped loop");
+        System.out.println("Hello World");
     }
 
-    private static void KeyToggle() {
+    private static boolean keyToggle() {
         if (READER.isKeyBindPressed(KEY_BIND) && KEY_BIND_TOGGLE) {
             KEY_BIND_TOGGLE = false;
-            System.out.println("Key Pressed");
+            System.out.println("Keybind Pressed");
+            return true;
         } else if ((!(READER.isKeyBindPressed(KEY_BIND)) && !KEY_BIND_TOGGLE)) {
             System.out.println("Key Released");
             KEY_BIND_TOGGLE = true;
+            return false;
         }
+        return false;
     }
 }
