@@ -5,7 +5,9 @@ import com.github.kwhat.jnativehook.NativeHookException;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyEvent;
 import com.github.kwhat.jnativehook.keyboard.NativeKeyListener;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class KeyListener implements NativeKeyListener {
@@ -47,11 +49,14 @@ public class KeyListener implements NativeKeyListener {
      * @return true if pressed, false otherwise
      */
     public boolean isKeyPressed(String KEY_NAME) {
-        Boolean OUTPUT = KEY_STATES.getOrDefault(KEY_NAME, false);
-        if (OUTPUT) {
-            System.out.println("Specified key pressed: " + KEY_NAME);
-        }
+        Boolean OUTPUT = KEY_STATES.getOrDefault(KEY_NAME.toLowerCase(), false);
         return OUTPUT;
+    }
+
+    public boolean isKeyBindPressed(String keyBind) {
+        String[] induvigualKeyBind = keyBind.split("\\+");
+        Set<String> induvigualKeyBindSet = new HashSet<>(Arrays.asList(induvigualKeyBind));
+        return isAnyKeyPressed().equals(induvigualKeyBindSet);
     }
 
     protected HashSet<String> isAnyKeyPressed() {
