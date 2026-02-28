@@ -2,28 +2,23 @@ package com.viveka01.copymail;
 //java -cp target/classes com.viveka01.copymail.App
 
 public class App {
-    static final String KEY_BIND = "a";
     static Boolean KEY_BIND_TOGGLE = true;
     static KeyListener READER = KeyListener.getInstance();
-    static {
-        ConfigManager.getInstance();
-    }
+    static ConfigManager config = ConfigManager.getInstance();
+    static final String KEY_BIND = config.configReader("hotkey");
 
-    // public static void main(String[] args) {
-    // while (!READER.isKeyPressed("escape")) {
-    // if (keyToggle()) {
-    // Email.DefaultEmail();
-    // }
-    // try {
-    // Thread.sleep(20);
-    // } catch (InterruptedException e) {
-    // e.printStackTrace();
-    // }
-    // }
-    // System.out.println("Escaped loop");
-    // }
     public static void main(String[] args) {
-        System.out.println("Hello World");
+        while (!READER.isKeyPressed("escape")) {
+            if (keyToggle()) {
+                Email.DefaultEmail();
+            }
+            try {
+                Thread.sleep(20);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Escaped loop");
     }
 
     private static boolean keyToggle() {

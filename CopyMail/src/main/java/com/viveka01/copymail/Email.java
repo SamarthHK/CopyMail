@@ -33,7 +33,7 @@ public class Email {
                         ConfigManager.getInstance().configReader("password"));
             }
         });
-        SESSION.setDebug(true);
+        // SESSION.setDebug(true);
         System.out.println("Session created sucsessfully, CreateSession ran");
         return SESSION;
 
