@@ -49,7 +49,7 @@ public class KeyListener implements NativeKeyListener {
     public boolean isKeyPressed(String KEY_NAME) {
         Boolean OUTPUT = KEY_STATES.getOrDefault(KEY_NAME, false);
         if (OUTPUT) {
-            // System.out.println("Specified key pressed: " + KEY_NAME);
+            System.out.println("Specified key pressed: " + KEY_NAME);
         }
         return OUTPUT;
     }
@@ -59,7 +59,7 @@ public class KeyListener implements NativeKeyListener {
     }
 
     public static KeyListener getInstance() {
-        // System.out.println("Instance Called");
+        System.out.println("Instance Called");
         return INSTANCE;
     }
 
@@ -70,7 +70,7 @@ public class KeyListener implements NativeKeyListener {
         } catch (NativeHookException ex) {
             throw new RuntimeException(ex);
         }
-        // System.out.println("Listener Init");
+        System.out.println("Listener Init");
         GlobalScreen.addNativeKeyListener(this);
     }
 

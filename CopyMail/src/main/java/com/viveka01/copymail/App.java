@@ -5,21 +5,11 @@ public class App {
     static final String KEY_BIND = "A";
     static Boolean KEY_BIND_TOGGLE = true;
     static KeyListener READER = KeyListener.getInstance();
+    static {
+        ConfigManager.getInstance();
+    }
 
     public static void main(String[] args) {
-        // HotKeyInput.hotKeyInput();
-        // ConfigManager.getInstance();
-        // while (!READER.isKeyPressed("Escape")) {
-        // // KeyToggle();
-        // System.out.println(READER.isAnyKeyPressed());
-        // try {
-        // Thread.sleep(10);
-        // } catch (InterruptedException e) {
-        // e.printStackTrace();
-        // }
-        // }
-        // System.out.println("Function Escaped");
-        Email.DefaultEmail();
     }
 
     private static void KeyToggle() {

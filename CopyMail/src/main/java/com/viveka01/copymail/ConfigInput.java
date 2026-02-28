@@ -53,8 +53,15 @@ public class ConfigInput {
 
     public static DefaultInputReturnStructure defaultInput() {
         System.out.println("Taking input for config");
-        return new DefaultInputReturnStructure(senderEmailInput(), passwordInput(), receiverEmailInput(),
-                hotKeyInput());
+        String senderEmail = senderEmailInput();
+        String password = passwordInput();
+        String receiverEmail = receiverEmailInput();
+        String hotKey = hotKeyInput();
+        return new DefaultInputReturnStructure(senderEmail, password, receiverEmail, hotKey);
+    }
+
+    public static void closeScanner() {
+        INPUT.close();
     }
 
 }

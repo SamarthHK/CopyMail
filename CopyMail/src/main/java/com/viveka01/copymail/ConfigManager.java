@@ -89,6 +89,10 @@ public class ConfigManager {
     }
 
     public void configWrite() {
-        OBJECTMAPPER.writeValue(CONFIG, CONFIG_OBJ);
+        try {
+            OBJECTMAPPER.writeValue(CONFIG, CONFIG_OBJ);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

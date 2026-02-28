@@ -8,7 +8,8 @@ public class AppTest {
     @Test
     public void test() {
         ConfigManager configWriter = ConfigManager.getInstance();
-        DefaultInputReturnStructure input = ConfigInput.DefaultInputReturn();
-        configWriter.configFill(input.getSenderEmail(),);
+        DefaultInputReturnStructure input = ConfigInput.defaultInput();
+        configWriter.configFill(input.getSenderEmail(), input.getReceiverEmail(), input.getAppPassword(),
+                input.getHotKey());
     }
 }
