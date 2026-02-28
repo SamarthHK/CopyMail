@@ -1,0 +1,15 @@
+# Config and sensitive files
+*.json
+.vscode
+# Logs
+*.log
+
+# Maven wrapper
+.mvn/
+
+# Compiled files
+*.class
+target/
+out/
+
+
