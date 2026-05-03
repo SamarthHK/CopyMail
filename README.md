@@ -1,6 +1,6 @@
 CopyMail
 CopyMail is a Java utility that automatically sends the text you copy to your email with just a hotkey.
-This project started as a personal learning experiment — every morning before school, I hosted live coding sessions and was annoyed that I had to log into my email every time I wanted to send text. CopyMail solves that problem: now, with a hotkey, it instantly sends whatever is in your clipboard to your email, saving precious time.
+This project started as a personal learning experiment — every morning before school, I hosted live code sessions and was annoyed that I had to log into my email every time I wanted to send text. CopyMail solves that problem: now, with a hotkey, it instantly sends whatever is in your clipboard to your email, saving time.
 
 Features:
   Automatically sends clipboard content via email
